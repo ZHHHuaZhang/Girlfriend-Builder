@@ -12,7 +12,7 @@ var devConfig = merge(prodConfig, {
         contentBase: path.join(__dirname, "../"),
         publicPath: "/dev/",
         hot: true,
-        host: "localhost",
+        host: "10.201.66.104",
         port: 8000
     },
     plugins: [
