@@ -1,13 +1,19 @@
 <template>
     <main id="builder">
         <header class="flex-row -v-center">
-            <h1>铝朋友生成器</h1>
+            <h1>老婆生成器</h1>
             <p><a href="https://github.com/ZHHHuaZhang/Girlfriend-Builder">讨论</a></p>
         </header>
         <hr class="titleHR">
-        <main class="flex-row flex-center" id="display">
-            <div class="side">
+        <div class="side flex-row -between">
+            <div>
+                <img :src="dynamic.bg0">
             </div>
+            <div>
+                <img :src="dynamic.bg1">
+            </div>
+        </div>
+        <main class="flex-row flex-center" id="display">
             <ul class="flex-column">
                 <div v-for="item in dynamic.lists">
                     <li class="flex-v-center">
@@ -22,13 +28,13 @@
                     <hr class="devide">
                 </div>
             </ul>
-            <div class="side">
+            <!-- <div class="side"> -->
             </div>
         </main>
         <footer class="button flex-row -between -v-center">
-            <div class="flex-v-center" @click="randomOn" :class="{stopClick: dynamic.stopClick}" :style="{backgroundColor: dynamic.randoming}"><span>生成</span></div>
-            <span><span class="count">你的第{{dynamic.count}}个铝朋友</span></span>
-            <div class="flex-v-center" @click="reset" :class="{stopClick: dynamic.stopClick}" :style="{backgroundColor: dynamic.disable}"><span>清除</span></div>
+            <div class="flex-v-center" @click="randomOn" :class="{stopClick: dynamic.stopClick}" :style="{width: dynamic.bigger, height: dynamic.bigger}"><span>生成</span></div>
+            <span><span class="count">你的第{{dynamic.count}}个老婆</span></span>
+            <div class="flex-v-center" @click="reset" :class="{stopClick: dynamic.stopClick}" :style="{width: dynamic.smaller, height: dynamic.smaller}"><span :style="{fontSize: dynamic.smallerFont}">清除</span></div>
         </footer>
     </main>
 </template>
@@ -133,8 +139,9 @@ var randomOn = function(event) {
     const totalTime = 1500;
     const times = 30;
     dynamic.stopClick = true;
-    dynamic.randoming = "#49f";
-    dynamic.disable = "#fff";
+    dynamic.bigger = "12vw";
+    //dynamic.smallerFont = "1vw";
+    //dynamic.smaller = "7vw";
     console.warn("ss");
     let timer = setInterval(() => {
         dynamic.lists.forEach(function(item, index) {
@@ -145,8 +152,9 @@ var randomOn = function(event) {
             dynamic.count++;
             clearInterval(timer);
             dynamic.stopClick = false;
-            dynamic.randoming = "";
-            dynamic.disable = "";
+            dynamic.bigger = "";
+            dynamic.smaller = "";
+            dynamic.smallerFont = "";
         }
     }, totalTime / times);
 };
@@ -217,9 +225,12 @@ img {
     position: relative;
     z-index: 3;
     background-color: inherit;
-    opacity: 0.8;
-    box-shadow: -3px 0px #9f9f9f;
+    /*opacity: 0.8;*/
+    /*box-shadow: -3px 0px #9f9f9f;*/
 
+}
+#builder ul *{
+    opacity: 0.95;
 }
 #builder ul li {
     height: 5.2vh;
@@ -278,8 +289,16 @@ img {
     color: #3f3f3f;
     opacity: 0.8;
 }
+#display ul{
+    /*opacity: 0.8;*/
+    background-color: #ffffffaa;
+}
+#display ul div{
+    background-color: #fff;
+}
 #builder .button .count {
     font-size: 3vw;
+    opacity: 0.8;
 }
 .stopClick {
     pointer-events: none;
@@ -289,6 +308,23 @@ img {
     height: 4vw;
     margin-left: 4vw;
     box-shadow: 1px 1px 5px #3f3f3f;
+}
+#builder .side {
+    position: fixed;
+    height: 50vh;
+    width: 100vw;
+    top: 40vh;
+    z-index: -1;
+}
+#builder .side div {
+    width: 30%;
+}
+#builder .side div:last-child {
+    margin-top: -6vh;
+    margin-right: -12vw;
+}
+#builder .side div:first-child {
+    margin-left: -16vw;
 }
 
 @media screen and (max-height: 638px) {
