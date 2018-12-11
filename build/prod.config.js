@@ -6,6 +6,7 @@ function resolve (dir) {
 }
 
 module.exports = {
+    
     entry: {
         index: "./src/js/index.js"
     },
@@ -16,12 +17,20 @@ module.exports = {
     module: {
         rules: [{
             test: /\.vue$/,
-            loader: "vue-loader"
+            loader: "vue-loader",
+            options: {
+                mode: 'production'
+              }
         }]
     },
     resolve: {
     	alias: {
     		"@": resolve("src")
     	}
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+          })
+    ]
 };

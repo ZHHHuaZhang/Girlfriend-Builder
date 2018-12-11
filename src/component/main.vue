@@ -40,7 +40,7 @@
 </template>
 <!--  -->
 <script>
-var Vue = require("../../node_modules/vue/dist/vue.js");
+var Vue = require("../../node_modules/vue/dist/vue.min.js");
 var dynamic = {
     lists: [
         { img: "./src/res/身高.png", key: "身高", value: "180" },
@@ -87,10 +87,10 @@ dynamic.lists.forEach(function(item, index) {
     }
 })
 var cups = ["1/2A", "A", "B", "C", "D", "E", "F", "G", "?"];
-var faceColors = ["正常", "棕褐", "纯白", "少女粉"];
-var hairs = ["包子头", "双马尾", "高马尾", "长马尾", "黑长直", "团子"];
-var properties = ["贵族", "异世界", "JK", "LOLI", "幼女", "御姐", "女王", "阿库娅"];
-var characters = ["中二", "傲娇", "人妻", "呆萌", "高冷", "腹黑", "毒舌", "阿库娅"];
+var faceColors = ["正常", "棕褐", "纯白", "少女粉","黑妹"];
+var hairs = ["包子头", "双马尾", "高马尾", "长马尾", "黑长直", "团子","姬发式",];
+var properties = ["贵族", "异世界", "JK", "LOLI", "幼女", "御姐", "阿库娅", "学生会长","老师", "不良","碧池","破鞋","优等生",'AI',"阿凡达","战术人形","猫娘",'龙化娘',];
+var characters = ["中二", "傲娇", "人妻", "呆萌", "高冷", "腹黑", "毒舌", "阿库娅","抖S","抖M","女王","百合","病娇" ];
 var randomArr = function(arr) {
     return arr[Math.round(Math.random() * (arr.length - 1))];
 };
@@ -110,9 +110,17 @@ var simpleRandom = function(start = 0, final = 255) {
     return (final - Math.round(Math.random() * (final - start)));
 }
 var randomSet = function() {
+    let flag = simpleRandom(6,0);
 
-    let height = simpleRandom(180, 100);
-    let weight = simpleRandom(70, 10);
+    let height = simpleRandom(180, 120);
+    // let weight = simpleRandom(70, 30);
+    let weight = 0;
+    if(flag){
+        weight = Math.round((height/100*(height/100))*20);
+    }
+    else{
+        weight = Math.round((height/100*(height/100))*26);
+    }
     let cup = randomArr(cups);
     let faceColor = randomArr(faceColors);
     let hair = randomArr(hairs);
