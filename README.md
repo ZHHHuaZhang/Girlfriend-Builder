@@ -1,6 +1,6 @@
 # Girlfriend-Builder
 联系邮箱：h5builder@sina.com  
-### 学生团队  
+学生团队  
 产品:&nbsp;&nbsp;&nbsp;&nbsp;ZHH  
 研发:&nbsp;&nbsp;&nbsp;&nbsp;MISAKI  
 界面设计:&nbsp;&nbsp;&nbsp;&nbsp;头不大  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Yan. 
