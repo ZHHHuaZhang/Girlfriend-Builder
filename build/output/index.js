@@ -2676,17 +2676,20 @@ var simpleRandom = function(start = 0, final = 255) {
     return (final - Math.round(Math.random() * (final - start)));
 }
 var randomSet = function() {
-    let flag = simpleRandom(6,0);
+    let flag = simpleRandom(5,0);
+    // console.warn(flag);
 
     let height = simpleRandom(180, 120);
     // let weight = simpleRandom(70, 30);
     let weight = 0;
     if(flag){
-        weight = Math.round((height/100*(height/100))*20);
+        weight = Math.round((height/100*(height/100))*19);
     }
     else{
-        weight = Math.round((height/100*(height/100))*26);
+        weight = Math.round((height/100*(height/100))*24);
     }
+    // console.warn("c  " + height);
+    // console.warn(weight);
     let cup = randomArr(cups);
     let faceColor = randomArr(faceColors);
     let hair = randomArr(hairs);
@@ -2716,11 +2719,16 @@ var randomOn = function(event) {
     dynamic.bigger = "12vw";
     //dynamic.smallerFont = "1vw";
     //dynamic.smaller = "7vw";
-    console.warn("ss");
+    //console.warn("ss");
     let timer = setInterval(() => {
+        var temp = randomSet();
         dynamic.lists.forEach(function(item, index) {
-            item.value = randomSet()[index];
-            fixTextColor.prototype.finalHandle(item);
+            // if(index===0){
+            //     console.warn(flag + "/" + temp[index]);
+            // }
+            //console.warn(temp);
+            item.value = temp[index];
+            //fixTextColor.prototype.finalHandle(item);
         });
         if (++flag === times) {
             dynamic.count++;
@@ -2736,7 +2744,6 @@ var randomOn = function(event) {
 var reset = function() {
     dynamic.lists.forEach(function(item, index) {
         item.value = constValue[index];
-
     });
     dynamic.count = 0;
 };
@@ -5789,7 +5796,7 @@ try {
     let s = "0xff";
     let n = Math.round(255/2);
     //console.warn(parseInt(parseInt(s).toString(10)) + 1);
-    console.warn(n.toString(16));
+    // console.warn(n.toString(16));
     // let curHairColor = "0x" + ten(r) + ten(g) + ten(b);
     // let l = parseInt(curHairColor).toString(16);
     // console.warn(curHairColor);

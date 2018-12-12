@@ -55,7 +55,7 @@ try {
     let s = "0xff";
     let n = Math.round(255/2);
     //console.warn(parseInt(parseInt(s).toString(10)) + 1);
-    console.warn(n.toString(16));
+    // console.warn(n.toString(16));
     // let curHairColor = "0x" + ten(r) + ten(g) + ten(b);
     // let l = parseInt(curHairColor).toString(16);
     // console.warn(curHairColor);
